@@ -1,8 +1,20 @@
+var style;
+
+chrome.storage.sync.get('style', function(data) {
+  style = data.style
+});
+
+chrome.storage.onChanged.addListener(function(changes, namespace) {
+  if (!changes['style']) { return; }
+
+  style = changes['style'].newValue
+});
+
 function getACage () {
   var img = document.createElement("img");
   var imgWidth = Math.floor(Math.random() * 300) + 50;
   var imgHeight = Math.floor(Math.random() * 300) + 50;
-  img.src = "https://www.placecage.com/" + imgWidth + "/" + imgHeight;
+  img.src = "https://place" + style + ".com/" + imgWidth + "/" + imgHeight;
   img.style.position = "fixed";
   img.style.left = Math.floor(Math.random() * 101) + "%"
   img.style.top = Math.floor(Math.random() * 101) + "%"
