@@ -16,8 +16,8 @@ function getACage () {
   var imgHeight = Math.floor(Math.random() * 300) + 50;
   img.src = "https://place" + style + ".com/" + imgWidth + "/" + imgHeight;
   img.style.position = "fixed";
-  img.style.left = Math.floor(Math.random() * 101) + "%"
-  img.style.top = Math.floor(Math.random() * 101) + "%"
+  img.style.left = Math.floor(Math.random() * 80) + 5 + "%"
+  img.style.top = Math.floor(Math.random() * 80) + 5 + "%"
 
   img.addEventListener("click",function(){
     img.parentNode.removeChild(img);
