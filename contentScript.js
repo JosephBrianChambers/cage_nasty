@@ -10,11 +10,31 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
   style = changes['style'].newValue
 });
 
+function imgSrc(sourceStyle, imgWidth, imgHeight) {
+  var sourceStyles = {
+    'cage': "https://www.placecage.com/" + imgWidth + "/" + imgHeight,
+    'kitten': "https://placekitten.com/" + imgWidth + "/" + imgHeight,
+    'bear': "https://placebear.com/" + imgWidth + "/" + imgHeight,
+    'murry': "https://www.fillmurray.com/" + imgWidth + "/" + imgHeight,
+    'beard': "https://placebeard.it/" + imgWidth + "/" + imgHeight,
+    'segal': "https://www.stevensegallery.com/" + imgWidth + "/" + imgHeight,
+  }
+
+  if (sourceStyle === 'random') {
+    var keys = Object.keys(sourceStyles)
+    var idx = Math.floor(Math.random() * Math.floor(keys.length))
+
+    return sourceStyles[keys[idx]]
+  } else {
+    return sourceStyles[sourceStyle]
+  }
+}
+
 function getACage () {
   var img = document.createElement("img");
   var imgWidth = Math.floor(Math.random() * 300) + 50;
   var imgHeight = Math.floor(Math.random() * 300) + 50;
-  img.src = "https://place" + style + ".com/" + imgWidth + "/" + imgHeight;
+  img.src = imgSrc(style, imgWidth, imgHeight)
   img.style.position = "fixed";
   img.style.left = Math.floor(Math.random() * 80) + 5 + "%"
   img.style.top = Math.floor(Math.random() * 80) + 5 + "%"
