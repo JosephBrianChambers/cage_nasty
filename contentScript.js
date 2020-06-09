@@ -54,4 +54,4 @@ function injectACage(cage) {
 setInterval(function(){
   var cage =  getACage();
   injectACage(cage)
-}, 3000);
+}, 1000);
